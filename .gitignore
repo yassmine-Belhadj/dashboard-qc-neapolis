@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+*.tmp
+# Fichiers volumineux non nécessaires pour le déploiement web
+memoire*.docx
