@@ -60,19 +60,19 @@ html, body, [class*="css"] {
     background-attachment: fixed;
 }
 
-/* ── Sidebar ── */
+/* ── Sidebar — Bleu Neapolis Pharma ── */
 [data-testid="stSidebar"] {
-    background: linear-gradient(180deg, #2D1B33 0%, #462A54 50%, #2A1731 100%);
+    background: linear-gradient(180deg, #0D3B5E 0%, #1A5F8E 45%, #0D3B5E 100%);
     border-right: none;
-    box-shadow: 4px 0 25px rgba(192, 99, 122, 0.18);
+    box-shadow: 4px 0 25px rgba(26, 95, 142, 0.35);
 }
 [data-testid="stSidebar"] * {
-    color: #FDE8EF !important;
+    color: #E8F4FD !important;
 }
 [data-testid="stSidebar"] .stSelectbox label,
 [data-testid="stSidebar"] .stMultiSelect label,
 [data-testid="stSidebar"] .stDateInput label {
-    color: #E8A0B4 !important;
+    color: #7EC8E3 !important;
     font-weight: 600;
     font-size: 0.85rem;
     letter-spacing: 0.05em;

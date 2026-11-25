@@ -1,4 +1,4 @@
-"""
+﻿"""
 app.py — Système de pilotage de la performance et amélioration continue
 Laboratoire de Contrôle Qualité Pharmaceutique — Néapolis Pharma (Laboratoires Médis)
 Hana Brinis — Projet de Fin d'Études 2026 — Master Bio-santé (FST)
@@ -27,7 +27,7 @@ from charts import (
 # CONFIGURATION PAGE (Fleur 🌸)
 # ─────────────────────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="Système de pilotage QC — Hana Brinis",
+    page_title="Système de pilotage CQ — Hana Brinis",
     page_icon="🌸",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -262,24 +262,25 @@ except Exception as e:
 # SIDEBAR
 # ─────────────────────────────────────────────────────────────────────────────
 with st.sidebar:
+    # Logo Neapolis Pharma
+    st.image("neapolis_logo.jpg", width=140)
     st.markdown("""
-    <div style='text-align:center; padding: 1.2rem 0 0.8rem;'>
-        <div style='font-size:2.2rem; line-height:1; margin-bottom:0.4rem;'>🌸</div>
-        <div style='font-size:1.4rem; color:#E8A0B4; font-weight:800; 
-                    letter-spacing:0.08em; font-family: serif;'>QC</div>
-        <div style='width:36px; height:2px; background:linear-gradient(90deg,#C0637A,#9B72AA); 
+    <div style='text-align:center; padding: 0.4rem 0 0.8rem;'>
+        <div style='font-size:1.4rem; color:#7EC8E3; font-weight:800; 
+                    letter-spacing:0.08em; font-family: serif;'>CQ</div>
+        <div style='width:36px; height:2px; background:linear-gradient(90deg,#1A5F8E,#5A9E3A); 
                     margin:0.4rem auto;'></div>
-        <div style='font-size:0.80rem; color:#FDE8EF; font-weight:700; 
+        <div style='font-size:0.80rem; color:#E8F4FD; font-weight:700; 
                     letter-spacing:0.04em; margin-top:0.3rem;'>
             PILOTAGE DE LA PERFORMANCE
         </div>
-        <div style='font-size:0.70rem; color:#9B72AA; margin-top:0.2rem;'>
+        <div style='font-size:0.70rem; color:#7EC8E3; margin-top:0.2rem;'>
             Projet de Fin d'Études — 2026
         </div>
     </div>
     """, unsafe_allow_html=True)
 
-    st.markdown("""<div style='border-top:1px solid rgba(232,160,180,0.2); margin:0.4rem 0 0.6rem;'></div>""",
+    st.markdown("""<div style='border-top:1px solid rgba(126,200,227,0.25); margin:0.4rem 0 0.6rem;'></div>""",
                 unsafe_allow_html=True)
 
     # 9 pages ciblées et 100% pertinentes
@@ -299,7 +300,7 @@ with st.sidebar:
         label_visibility="collapsed",
     )
 
-    st.markdown("""<div style='border-top:1px solid rgba(232,160,180,0.2); margin:0.8rem 0 0.6rem;'></div>""",
+    st.markdown("""<div style='border-top:1px solid rgba(126,200,227,0.25); margin:0.8rem 0 0.6rem;'></div>""",
                 unsafe_allow_html=True)
 
     st.markdown("""<div style='color:#E8A0B4; font-size:0.72rem; font-weight:700; 
@@ -335,7 +336,7 @@ with st.sidebar:
         </div>
         """, unsafe_allow_html=True)
 
-    st.markdown("""<div style='border-top:1px solid rgba(232,160,180,0.2); margin:0.8rem 0 0.6rem;'></div>""",
+    st.markdown("""<div style='border-top:1px solid rgba(126,200,227,0.25); margin:0.8rem 0 0.6rem;'></div>""",
                 unsafe_allow_html=True)
 
     st.markdown("""
@@ -1110,7 +1111,7 @@ elif page == "Démarche Lean & DMAIC":
         "Mémoire PFE Hana Brinis · Laboratoires Néapolis Pharma (Médis) · Université de Tunis El Manar"
     )
 
-    section_title("Les 5 Étapes de la Démarche DMAIC appliquées au laboratoire QC")
+    section_title("Les 5 Étapes de la Démarche DMAIC appliquées au laboratoire CQ")
 
     dmaic_steps = [
         {"lettre": "D", "etape": "Définir", "desc": "Cadrage du projet, cartographie SIPOC/processus, analyse QQOQCCP et charte de projet pour cibler les pertes de productivité."},
@@ -1132,7 +1133,7 @@ elif page == "Démarche Lean & DMAIC":
             </div>
             """, unsafe_allow_html=True)
 
-    section_title("Classification des 8 Formes de Gaspillage (Muda) en Laboratoire QC")
+    section_title("Classification des 8 Formes de Gaspillage (Muda) en laboratoire CQ")
 
     c1, c2 = st.columns(2)
     with c1:

@@ -346,29 +346,42 @@ def bar_avant_apres_global(kpi):
         name="Valeur Ajoutée (VA)",
         x=categories, y=va_vals,
         marker_color=CLASS_COLORS["VA"],
-        text=[f"{int(v)} min" for v in va_vals], textposition="inside"
+        text=[f"{int(v)} min" for v in va_vals], textposition="inside",
+        textfont=dict(size=12, color="white", family="Nunito", weight="bold"),
+        insidetextanchor="middle",
     ))
     fig.add_trace(go.Bar(
         name="Nécessaire Sans VA (NNVA)",
         x=categories, y=nnva_vals,
         marker_color=CLASS_COLORS["NNVA"],
-        text=[f"{int(v)} min" for v in nnva_vals], textposition="inside"
+        text=[f"{int(v)} min" for v in nnva_vals], textposition="inside",
+        textfont=dict(size=12, color="white", family="Nunito", weight="bold"),
+        insidetextanchor="middle",
     ))
     fig.add_trace(go.Bar(
         name="Non-Valeur Ajoutée (NVA)",
         x=categories, y=nva_vals,
         marker_color=CLASS_COLORS["NVA"],
-        text=[f"{int(v)} min" for v in nva_vals], textposition="inside"
+        text=[f"{int(v)} min" for v in nva_vals], textposition="inside",
+        textfont=dict(size=12, color="white", family="Nunito", weight="bold"),
+        insidetextanchor="middle",
     ))
 
     fig.update_layout(
         barmode="stack",
-        height=380,
+        height=420,
         paper_bgcolor="rgba(0,0,0,0)",
         plot_bgcolor="rgba(255,255,255,0.5)",
         font=dict(family="Nunito", color=COLORS["text_mid"]),
-        legend=dict(orientation="h", y=1.12, x=0.5, xanchor="center"),
-        margin=dict(l=20, r=20, t=30, b=30),
+        legend=dict(
+            orientation="h",
+            y=1.18, x=0.5, xanchor="center",
+            bgcolor="rgba(255,255,255,0.85)",
+            bordercolor="rgba(0,0,0,0.08)",
+            borderwidth=1,
+            font=dict(size=12),
+        ),
+        margin=dict(l=20, r=20, t=60, b=30),
         yaxis=dict(title="Temps opérateur global (min)", gridcolor="rgba(176,160,184,0.2)"),
     )
     return fig
