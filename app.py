@@ -826,12 +826,6 @@ elif page == "Analyse des Pertes":
     with tab1:
         fig_pareto = pareto_chart(df_pertes)
         st.plotly_chart(fig_pareto, use_container_width=True)
-        info_box(
-            "<b>Interprétation Lean (Loi de Pareto 80/20) :</b> Les deux premières causes de pertes "
-            "(Indisponibilité de l'eau et Événements chromatographiques) concentraient à elles seules "
-            "près de <b>60 % des pertes initiales</b>. Le ciblage prioritaire de ces axes par les actions "
-            "P-01 et P-02 a permis d'optimiser l'efficacité des investissements."
-        )
 
     with tab2:
         fig_bar = bar_pertes_par_cause(df_pertes)
