@@ -705,7 +705,7 @@ elif page == "Journal des Activités":
             return f"background-color: {CLASS_COLORS['NNVA']}22; color:#8B5E1A; font-weight:600;"
         return ""
 
-    styled = df_f[cols_display].style.applymap(color_classe, subset=["Classe VA/NNVA"]) \
+    styled = df_f[cols_display].style.map(color_classe, subset=["Classe VA/NNVA"]) \
                                .format({"Durée brute (min)": "{:.0f}", "Temps net (min)": "{:.0f}"})
     st.dataframe(styled, use_container_width=True, height=400)
 
@@ -775,7 +775,7 @@ elif page == "Événements NVA":
             return "background-color:#E8F5F0; color:#2D6A50; font-weight:600;"
         return ""
 
-    styled_nva = df_nva_f[cols_nva].style.applymap(color_periode_cell, subset=["Période"])
+    styled_nva = df_nva_f[cols_nva].style.map(color_periode_cell, subset=["Période"])
     st.dataframe(styled_nva, use_container_width=True, height=400)
 
 
@@ -843,7 +843,7 @@ elif page == "Analyse des Pertes":
             except: pass
             return ""
 
-        styled_p = df_disp.style.applymap(color_gain_cell, subset=["Gain (min)"])
+        styled_p = df_disp.style.map(color_gain_cell, subset=["Gain (min)"])
         st.dataframe(styled_p, use_container_width=True, height=320)
 
     section_title("Profil comparatif par type d'essai")
@@ -908,7 +908,7 @@ elif page == "Comparaison AVANT / APRÈS":
             return "color:#8B2020;"
 
         st.dataframe(
-            df_table.style.applymap(color_var, subset=["Variation"]),
+            df_table.style.map(color_var, subset=["Variation"]),
             use_container_width=True, hide_index=True, height=240
         )
 
@@ -1090,7 +1090,7 @@ elif page == "Référentiel des Tâches":
         st.plotly_chart(fig_er, use_container_width=True)
 
     section_title("Catalogue des tâches et standards de temps")
-    styled_ref = df_ref_f[["Produit", "Essai", "Sous-tâche", "Standard (min)", "Classe"]].style.applymap(
+    styled_ref = df_ref_f[["Produit", "Essai", "Sous-tâche", "Standard (min)", "Classe"]].style.map(
         lambda v: (
             f"background-color:{CLASS_COLORS.get(v,'')}22;"
             f"color:{'#2D6A50' if v=='VA' else '#8B5E1A'}; font-weight:600;"
