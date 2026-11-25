@@ -369,20 +369,27 @@ def bar_avant_apres_global(kpi):
 
     fig.update_layout(
         barmode="stack",
-        height=420,
+        height=480,
         paper_bgcolor="rgba(0,0,0,0)",
-        plot_bgcolor="rgba(255,255,255,0.5)",
+        plot_bgcolor="rgba(255,255,255,0.6)",
         font=dict(family="Nunito", color=COLORS["text_mid"]),
         legend=dict(
             orientation="h",
-            y=1.18, x=0.5, xanchor="center",
-            bgcolor="rgba(255,255,255,0.85)",
-            bordercolor="rgba(0,0,0,0.08)",
+            yanchor="bottom",
+            y=1.06,
+            x=0.5,
+            xanchor="center",
+            bgcolor="rgba(255,255,255,0.95)",
+            bordercolor="rgba(90,158,58,0.3)",
             borderwidth=1,
-            font=dict(size=12),
+            font=dict(size=12, color="#132E20", family="Nunito"),
         ),
-        margin=dict(l=20, r=20, t=60, b=30),
-        yaxis=dict(title="Temps opérateur global (min)", gridcolor="rgba(176,160,184,0.2)"),
+        margin=dict(l=25, r=25, t=95, b=40),
+        yaxis=dict(
+            title="Temps opérateur global (min)",
+            range=[0, 6300],
+            gridcolor="rgba(143,168,155,0.25)",
+        ),
     )
     return fig
 

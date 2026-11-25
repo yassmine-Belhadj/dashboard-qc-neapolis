@@ -28,7 +28,7 @@ from charts import (
 # ─────────────────────────────────────────────────────────────────────────────
 st.set_page_config(
     page_title="Système de pilotage CQ — Hana Brinis",
-    page_icon="🌸",
+    page_icon="🌿",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -46,9 +46,9 @@ st.markdown("""
     padding: 0.4rem 0 !important;
 }
 
-/* ── Boutons Roses Très Visibles ── */
+/* ── Boutons Vert & Bleu Neapolis Pharma ── */
 div.stButton > button {
-    background: linear-gradient(135deg, #C0637A 0%, #D87093 50%, #C0637A 100%) !important;
+    background: linear-gradient(135deg, #3A7D34 0%, #1A5F8E 100%) !important;
     color: #FFFFFF !important;
     font-weight: 800 !important;
     font-size: 0.90rem !important;
@@ -56,41 +56,41 @@ div.stButton > button {
     border-radius: 12px !important;
     border: 1px solid rgba(255, 255, 255, 0.4) !important;
     padding: 0.70rem 1.2rem !important;
-    box-shadow: 0 4px 18px rgba(192, 99, 122, 0.45) !important;
+    box-shadow: 0 4px 18px rgba(58, 125, 52, 0.4) !important;
     transition: all 0.25s ease-in-out !important;
     cursor: pointer !important;
 }
 div.stButton > button:hover {
     transform: translateY(-2px) !important;
-    box-shadow: 0 7px 24px rgba(216, 112, 147, 0.65) !important;
-    background: linear-gradient(135deg, #D87093 0%, #C0637A 100%) !important;
+    box-shadow: 0 7px 24px rgba(26, 95, 142, 0.6) !important;
+    background: linear-gradient(135deg, #438938 0%, #2072A8 100%) !important;
 }
 
-/* ── File Uploader Rose ── */
+/* ── File Uploader Vert & Bleu Neapolis ── */
 [data-testid="stFileUploader"] {
-    background: rgba(253, 232, 239, 0.15) !important;
+    background: rgba(235, 245, 238, 0.25) !important;
     border-radius: 14px !important;
     padding: 0.5rem !important;
 }
 [data-testid="stFileUploader"] section {
-    background: rgba(253, 232, 239, 0.25) !important;
-    border: 2px dashed #D87093 !important;
+    background: rgba(235, 245, 238, 0.35) !important;
+    border: 2px dashed #5A9E3A !important;
     border-radius: 12px !important;
 }
 [data-testid="stFileUploader"] button {
-    background: linear-gradient(135deg, #C0637A 0%, #D87093 100%) !important;
+    background: linear-gradient(135deg, #3A7D34 0%, #1A5F8E 100%) !important;
     color: #FFFFFF !important;
     font-weight: 700 !important;
     border: none !important;
     border-radius: 8px !important;
-    box-shadow: 0 3px 12px rgba(192, 99, 122, 0.4) !important;
+    box-shadow: 0 3px 12px rgba(58, 125, 52, 0.35) !important;
 }
 
 /* Badges */
-.badge-realise  { background:#E8F5F0; color:#2D6A50; border:1px solid #6BAB90; padding:0.2rem 0.7rem; border-radius:50px; font-size:0.75rem; font-weight:700; }
-.badge-encours  { background:#EDE0F5; color:#5A3D7A; border:1px solid #9B72AA; padding:0.2rem 0.7rem; border-radius:50px; font-size:0.75rem; font-weight:700; }
+.badge-realise  { background:#E8F5F0; color:#2D6A50; border:1px solid #3A7D34; padding:0.2rem 0.7rem; border-radius:50px; font-size:0.75rem; font-weight:700; }
+.badge-encours  { background:#E8F4FD; color:#1A5F8E; border:1px solid #7EC8E3; padding:0.2rem 0.7rem; border-radius:50px; font-size:0.75rem; font-weight:700; }
 .badge-etude    { background:#FEF3E8; color:#8B5E1A; border:1px solid #E8A45A; padding:0.2rem 0.7rem; border-radius:50px; font-size:0.75rem; font-weight:700; }
-.badge-haute    { background:#FDE8E8; color:#8B2020; border:1px solid #D96B6B; padding:0.2rem 0.7rem; border-radius:50px; font-size:0.75rem; font-weight:700; }
+.badge-haute    { background:#FDE8E8; color:#8B2020; border:1px solid #D9534F; padding:0.2rem 0.7rem; border-radius:50px; font-size:0.75rem; font-weight:700; }
 .badge-moyenne  { background:#FEF3E8; color:#8B5E1A; border:1px solid #E8A45A; padding:0.2rem 0.7rem; border-radius:50px; font-size:0.75rem; font-weight:700; }
 </style>
 """, unsafe_allow_html=True)
@@ -262,19 +262,29 @@ except Exception as e:
 # SIDEBAR
 # ─────────────────────────────────────────────────────────────────────────────
 with st.sidebar:
-    # Logo Neapolis Pharma
-    st.image("neapolis_logo.jpg", width=140)
-    st.markdown("""
-    <div style='text-align:center; padding: 0.4rem 0 0.8rem;'>
-        <div style='font-size:1.4rem; color:#7EC8E3; font-weight:800; 
-                    letter-spacing:0.08em; font-family: serif;'>CQ</div>
-        <div style='width:36px; height:2px; background:linear-gradient(90deg,#1A5F8E,#5A9E3A); 
-                    margin:0.4rem auto;'></div>
-        <div style='font-size:0.80rem; color:#E8F4FD; font-weight:700; 
-                    letter-spacing:0.04em; margin-top:0.3rem;'>
+    import base64
+    logo_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "neapolis_logo.jpg")
+    logo_b64 = ""
+    if os.path.exists(logo_path):
+        with open(logo_path, "rb") as f:
+            logo_b64 = base64.b64encode(f.read()).decode("utf-8")
+    
+    logo_img_html = f"<img src='data:image/jpeg;base64,{logo_b64}' style='width:125px; border-radius:10px; box-shadow:0 4px 14px rgba(0,0,0,0.3); background:white; padding:4px; display:inline-block;' />" if logo_b64 else ""
+
+    st.markdown(f"""
+    <div style='text-align:center; padding: 0.8rem 0 0.6rem;'>
+        <div style='font-size:1.6rem; color:#7EC8E3; font-weight:900; 
+                    letter-spacing:0.12em; font-family: serif; margin-bottom:0.4rem;'>CQ</div>
+        <div style='display:flex; justify-content:center; align-items:center; margin:0.3rem 0 0.5rem;'>
+            {logo_img_html}
+        </div>
+        <div style='width:40px; height:2.5px; background:linear-gradient(90deg,#7EC8E3,#5A9E3A); 
+                    margin:0.5rem auto;'></div>
+        <div style='font-size:0.82rem; color:#E8F4FD; font-weight:800; 
+                    letter-spacing:0.05em;'>
             PILOTAGE DE LA PERFORMANCE
         </div>
-        <div style='font-size:0.70rem; color:#7EC8E3; margin-top:0.2rem;'>
+        <div style='font-size:0.72rem; color:#7EC8E3; margin-top:0.25rem;'>
             Projet de Fin d'Études — 2026
         </div>
     </div>
@@ -303,7 +313,7 @@ with st.sidebar:
     st.markdown("""<div style='border-top:1px solid rgba(126,200,227,0.25); margin:0.8rem 0 0.6rem;'></div>""",
                 unsafe_allow_html=True)
 
-    st.markdown("""<div style='color:#E8A0B4; font-size:0.72rem; font-weight:700; 
+    st.markdown("""<div style='color:#7EC8E3; font-size:0.72rem; font-weight:700; 
                     letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.4rem;'>
                     Mise à jour des données</div>""", unsafe_allow_html=True)
 
@@ -329,10 +339,10 @@ with st.sidebar:
     xlsx_files = [f for f in os.listdir(EXCEL_DIR) if f.endswith(".xlsx") and not f.startswith("~$")]
     if xlsx_files:
         st.markdown(f"""
-        <div style='font-size:0.70rem; color:#6B4D7A; margin-top:0.4rem; 
+        <div style='font-size:0.70rem; color:#A8D5E5; margin-top:0.4rem; 
                     background:rgba(0,0,0,0.15); border-radius:8px; padding:0.45rem 0.6rem;'>
             Source active :<br>
-            <span style='color:#E8A0B4; font-weight:600;'>{xlsx_files[0][:32]}...</span>
+            <span style='color:#7EC8E3; font-weight:600;'>{xlsx_files[0][:32]}...</span>
         </div>
         """, unsafe_allow_html=True)
 
@@ -340,11 +350,11 @@ with st.sidebar:
                 unsafe_allow_html=True)
 
     st.markdown("""
-    <div style='text-align:center; color:#6B4D7A; font-size:0.70rem; padding:0 0.3rem;'>
+    <div style='text-align:center; color:#A8D5E5; font-size:0.72rem; padding:0 0.3rem;'>
         Période d'évaluation<br>
-        <span style='color:#E8A0B4; font-weight:700;'>Mars — Août 2026</span><br><br>
-        <span style='color:#9B72AA;'>Néapolis Pharma (Médis)</span><br><br>
-        <span style='color:#4A2D5A; font-weight:700;'>Hana Brinis</span>
+        <span style='color:#7EC8E3; font-weight:700;'>Mars — Août 2026</span><br><br>
+        <span style='color:#CBE6D4;'>Néapolis Pharma (Médis)</span><br><br>
+        <span style='color:#FFFFFF; font-weight:800; letter-spacing:0.04em;'>Hana Brinis</span>
     </div>
     """, unsafe_allow_html=True)
 
@@ -355,9 +365,9 @@ with st.sidebar:
 def section_title(text):
     st.markdown(f"""
     <div style='margin:2rem 0 1rem; padding-bottom:0.45rem;
-                border-bottom:2px solid; 
-                border-image:linear-gradient(90deg,#C0637A,#9B72AA,transparent) 1;
-                font-size:1.15rem; font-weight:700; color:#2D1B33; 
+                border-bottom:2.5px solid; 
+                border-image:linear-gradient(90deg,#3A7D34,#1A5F8E,transparent) 1;
+                font-size:1.15rem; font-weight:800; color:#0A2F4C; 
                 font-family: serif; letter-spacing:0.02em;'>
         {text}
     </div>
@@ -367,25 +377,25 @@ def section_title(text):
 def page_header(title, subtitle=""):
     st.markdown(f"""
     <div style='padding:0.3rem 0 0.6rem;'>
-        <div style='font-family: Playfair Display, serif; font-size:2rem; font-weight:700;
-                    background:linear-gradient(135deg,#C0637A,#9B72AA);
+        <div style='font-family: Playfair Display, serif; font-size:2rem; font-weight:800;
+                    background:linear-gradient(135deg,#0A2F4C 0%, #1A5F8E 50%, #3A7D34 100%);
                     -webkit-background-clip:text; -webkit-text-fill-color:transparent;
                     background-clip:text; line-height:1.2; margin-bottom:0.3rem;'>
             {title}
         </div>
-        <div style='color:#9B72AA; font-size:0.92rem; font-weight:500; letter-spacing:0.02em;'>
+        <div style='color:#1A5F8E; font-size:0.92rem; font-weight:600; letter-spacing:0.02em;'>
             {subtitle}
         </div>
     </div>
-    <hr style='border:none; height:1px; background:linear-gradient(90deg,transparent,#E8A0B4,transparent); margin:0.4rem 0 1.3rem;'>
+    <hr style='border:none; height:2px; background:linear-gradient(90deg,transparent,#5A9E3A,#1A5F8E,transparent); margin:0.4rem 0 1.3rem;'>
     """, unsafe_allow_html=True)
 
 
 def info_box(text):
     st.markdown(f"""
-    <div style='background:linear-gradient(135deg,#FDE8EF,#EDE0F5); border-left:4px solid #C0637A;
+    <div style='background:linear-gradient(135deg,#EBF5EE,#E8F4FD); border-left:4px solid #3A7D34;
                 border-radius:0 12px 12px 0; padding:0.9rem 1.1rem; margin:1rem 0;
-                font-size:0.88rem; color:#4A2D5A; line-height:1.6;'>
+                font-size:0.88rem; color:#132E20; line-height:1.6;'>
         {text}
     </div>
     """, unsafe_allow_html=True)
@@ -397,7 +407,7 @@ def info_box(text):
 if page == "Vue d'ensemble & Indicateurs":
 
     page_header(
-        "🌸 Système de pilotage de la performance et amélioration continue",
+        "Système de pilotage de la performance et amélioration continue",
         "Laboratoire de Contrôle Qualité Pharmaceutique — Néapolis Pharma (Laboratoires Médis) · Mars – Août 2026"
     )
 
@@ -405,19 +415,19 @@ if page == "Vue d'ensemble & Indicateurs":
     gain_heures = round(kpi['gain_nva'] / 60, 1)
 
     st.markdown(f"""
-    <div style='background: linear-gradient(135deg, rgba(192,99,122,0.12) 0%, rgba(155,114,170,0.14) 100%);
-                border: 1px solid rgba(192,99,122,0.30); border-radius: 16px; padding: 1.1rem 1.5rem;
+    <div style='background: linear-gradient(135deg, rgba(58,125,52,0.10) 0%, rgba(26,95,142,0.12) 100%);
+                border: 1.5px solid rgba(58,125,52,0.35); border-radius: 16px; padding: 1.1rem 1.5rem;
                 margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;'>
         <div>
-            <div style='font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: #9B72AA; font-weight: 800;'>
+            <div style='font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: #1A5F8E; font-weight: 800;'>
                 BILAN STRATÉGIQUE DE L'AMÉLIORATION CONTINUE
             </div>
-            <div style='font-size: 1.25rem; font-weight: 800; color: #2D1B33; font-family: serif; margin-top: 0.2rem;'>
-                Gain net : <span style='color: #6BAB90;'>+{int(kpi['gain_nva'])} minutes</span> ({gain_heures} h restituées) &nbsp;·&nbsp; Pertes NVA : <span style='color: #C0637A;'>-{reduction_pct} %</span>
+            <div style='font-size: 1.25rem; font-weight: 800; color: #0A2F4C; font-family: serif; margin-top: 0.2rem;'>
+                Gain net : <span style='color: #3A7D34;'>+{int(kpi['gain_nva'])} minutes</span> ({gain_heures} h restituées) &nbsp;·&nbsp; Pertes NVA : <span style='color: #D9534F;'>-{reduction_pct} %</span>
             </div>
         </div>
         <div style='text-align: right;'>
-            <span style='background: #E8F5F0; color: #2D6A50; font-weight: 800; font-size: 0.85rem; padding: 0.4rem 0.9rem; border-radius: 50px; border: 1px solid #6BAB90;'>
+            <span style='background: #EBF5EE; color: #2D6A50; font-weight: 800; font-size: 0.85rem; padding: 0.45rem 1rem; border-radius: 50px; border: 1.5px solid #3A7D34;'>
                 Taux de perte divisé par 2 (11,35 % → 4,96 %)
             </span>
         </div>
@@ -433,7 +443,7 @@ if page == "Vue d'ensemble & Indicateurs":
         <div style='background: white; border-radius: 18px; padding: 1.4rem 1.1rem; text-align: center;
                     box-shadow: 0 4px 20px rgba(217, 107, 107, 0.12); border: 1px solid rgba(217, 107, 107, 0.25);
                     border-top: 4px solid #D96B6B; height: 100%;'>
-            <div style='font-size: 0.74rem; color: #9B72AA; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;'>
+            <div style='font-size: 0.74rem; color: #1A5F8E; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;'>
                 Pertes NVA — AVANT
             </div>
             <div style='font-size: 2.3rem; font-weight: 900; color: #D96B6B; line-height: 1.1; margin: 0.4rem 0;'>
@@ -450,7 +460,7 @@ if page == "Vue d'ensemble & Indicateurs":
         <div style='background: white; border-radius: 18px; padding: 1.4rem 1.1rem; text-align: center;
                     box-shadow: 0 4px 20px rgba(107, 171, 144, 0.12); border: 1px solid rgba(107, 171, 144, 0.25);
                     border-top: 4px solid #6BAB90; height: 100%;'>
-            <div style='font-size: 0.74rem; color: #9B72AA; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;'>
+            <div style='font-size: 0.74rem; color: #1A5F8E; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;'>
                 Pertes NVA — APRÈS
             </div>
             <div style='font-size: 2.3rem; font-weight: 900; color: #6BAB90; line-height: 1.1; margin: 0.4rem 0;'>
@@ -466,11 +476,11 @@ if page == "Vue d'ensemble & Indicateurs":
         st.markdown(f"""
         <div style='background: white; border-radius: 18px; padding: 1.4rem 1.1rem; text-align: center;
                     box-shadow: 0 4px 20px rgba(192, 99, 122, 0.14); border: 1px solid rgba(192, 99, 122, 0.25);
-                    border-top: 4px solid #C0637A; height: 100%;'>
-            <div style='font-size: 0.74rem; color: #9B72AA; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;'>
+                    border-top: 4px solid #D9534F; height: 100%;'>
+            <div style='font-size: 0.74rem; color: #1A5F8E; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;'>
                 Temps Net Récupéré
             </div>
-            <div style='font-size: 2.3rem; font-weight: 900; color: #C0637A; line-height: 1.1; margin: 0.4rem 0;'>
+            <div style='font-size: 2.3rem; font-weight: 900; color: #D9534F; line-height: 1.1; margin: 0.4rem 0;'>
                 +{int(kpi['gain_nva'])} <span style='font-size: 1.1rem; font-weight: 700;'>min</span>
             </div>
             <div style='display: inline-block; background: #FDE8EF; color: #8B2020; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 50px;'>
@@ -484,7 +494,7 @@ if page == "Vue d'ensemble & Indicateurs":
         <div style='background: white; border-radius: 18px; padding: 1.4rem 1.1rem; text-align: center;
                     box-shadow: 0 4px 20px rgba(107, 171, 144, 0.14); border: 1px solid rgba(107, 171, 144, 0.25);
                     border-top: 4px solid #6BAB90; height: 100%;'>
-            <div style='font-size: 0.74rem; color: #9B72AA; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;'>
+            <div style='font-size: 0.74rem; color: #1A5F8E; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;'>
                 Taux de Réduction NVA
             </div>
             <div style='font-size: 2.3rem; font-weight: 900; color: #6BAB90; line-height: 1.1; margin: 0.4rem 0;'>
@@ -507,13 +517,13 @@ if page == "Vue d'ensemble & Indicateurs":
         st.markdown(f"""
         <div style='background: white; border-radius: 16px; padding: 1.2rem 1rem; text-align: center;
                     border: 1px solid rgba(107, 171, 144, 0.25); border-left: 4px solid #6BAB90;'>
-            <div style='font-size: 0.74rem; color: #9B72AA; font-weight: 700; text-transform: uppercase;'>
+            <div style='font-size: 0.74rem; color: #1A5F8E; font-weight: 700; text-transform: uppercase;'>
                 Temps à Valeur Ajoutée (VA)
             </div>
             <div style='font-size: 1.9rem; font-weight: 800; color: #6BAB90; margin: 0.3rem 0;'>
                 {int(kpi['va_avant'])} min
             </div>
-            <div style='font-size: 0.80rem; color: #4A2D5A;'>
+            <div style='font-size: 0.80rem; color: #132E20;'>
                 <b>61,1 %</b> du temps opérateur total (Cœur de métier)
             </div>
         </div>
@@ -523,13 +533,13 @@ if page == "Vue d'ensemble & Indicateurs":
         st.markdown(f"""
         <div style='background: white; border-radius: 16px; padding: 1.2rem 1rem; text-align: center;
                     border: 1px solid rgba(232, 164, 90, 0.25); border-left: 4px solid #E8A45A;'>
-            <div style='font-size: 0.74rem; color: #9B72AA; font-weight: 700; text-transform: uppercase;'>
+            <div style='font-size: 0.74rem; color: #1A5F8E; font-weight: 700; text-transform: uppercase;'>
                 Temps Nécessaire Sans VA (NNVA)
             </div>
             <div style='font-size: 1.9rem; font-weight: 800; color: #E8A45A; margin: 0.3rem 0;'>
                 {int(kpi['nnva_avant'])} min
             </div>
-            <div style='font-size: 0.80rem; color: #4A2D5A;'>
+            <div style='font-size: 0.80rem; color: #132E20;'>
                 <b>27,5 %</b> du temps total (Traçabilité & BPF)
             </div>
         </div>
@@ -538,14 +548,14 @@ if page == "Vue d'ensemble & Indicateurs":
     with c3:
         st.markdown(f"""
         <div style='background: white; border-radius: 16px; padding: 1.2rem 1rem; text-align: center;
-                    border: 1px solid rgba(192, 99, 122, 0.25); border-left: 4px solid #C0637A;'>
-            <div style='font-size: 0.74rem; color: #9B72AA; font-weight: 700; text-transform: uppercase;'>
+                    border: 1px solid rgba(58, 125, 52, 0.25); border-left: 4px solid #3A7D34;'>
+            <div style='font-size: 0.74rem; color: #1A5F8E; font-weight: 700; text-transform: uppercase;'>
                 Ratio d'Efficience (VA / NVA)
             </div>
-            <div style='font-size: 1.9rem; font-weight: 800; color: #C0637A; margin: 0.3rem 0;'>
+            <div style='font-size: 1.9rem; font-weight: 800; color: #3A7D34; margin: 0.3rem 0;'>
                 {ratio_avant} → {ratio_apres}
             </div>
-            <div style='font-size: 0.80rem; color: #4A2D5A;'>
+            <div style='font-size: 0.80rem; color: #132E20;'>
                 La valeur ajoutée est désormais <b>{ratio_apres}×</b> supérieure aux pertes
             </div>
         </div>
@@ -998,9 +1008,9 @@ elif page == "Plan d'Actions":
         st.markdown(f"""
         <div style='background:white; border-radius:14px; padding:1.2rem 1.4rem; margin-bottom:1rem;
                     box-shadow:0 2px 14px rgba(192,99,122,0.09); 
-                    border-left:4px solid #C0637A;'>
+                    border-left:4px solid #3A7D34;'>
             <div style='display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem;'>
-                <div style='font-size:1.05rem; font-weight:800; color:#C0637A; 
+                <div style='font-size:1.05rem; font-weight:800; color:#3A7D34; 
                             font-family:serif; letter-spacing:0.03em;'>
                     Action {row["ID"]}
                 </div>
@@ -1126,8 +1136,8 @@ elif page == "Démarche Lean & DMAIC":
         with cols_d[i]:
             st.markdown(f"""
             <div style='background:white; border-radius:14px; padding:1.1rem 0.8rem; text-align:center;
-                        box-shadow:0 3px 14px rgba(192,99,122,0.08); border-top:3px solid #C0637A; height:100%;'>
-                <div style='font-size:1.8rem; font-weight:900; color:#C0637A;'>{step['lettre']}</div>
+                        box-shadow:0 3px 14px rgba(192,99,122,0.08); border-top:3px solid #3A7D34; height:100%;'>
+                <div style='font-size:1.8rem; font-weight:900; color:#3A7D34;'>{step['lettre']}</div>
                 <div style='font-size:0.85rem; font-weight:800; color:#2D1B33; margin:0.3rem 0;'>{step['etape']}</div>
                 <div style='font-size:0.75rem; color:#6B4D7A; line-height:1.4;'>{step['desc']}</div>
             </div>
@@ -1139,9 +1149,9 @@ elif page == "Démarche Lean & DMAIC":
     with c1:
         st.markdown("""
         <div style='background:white; border-radius:14px; padding:1.2rem; box-shadow:0 2px 12px rgba(192,99,122,0.08);'>
-            <div style='font-weight:700; color:#C0637A; margin-bottom:0.5rem;'>1. Attentes (Temps NVA majeur)</div>
+            <div style='font-weight:700; color:#3A7D34; margin-bottom:0.5rem;'>1. Attentes (Temps NVA majeur)</div>
             <div style='font-size:0.82rem; color:#4A2D5A;'>Indisponibilité de l'eau purifiée (265 min), attente de libération des chaînes HPLC (95 min), ressources de préparation (50 min).</div>
-            <div style='font-weight:700; color:#C0637A; margin:0.8rem 0 0.5rem;'>2. Mouvements et Déplacements Inutiles</div>
+            <div style='font-weight:700; color:#3A7D34; margin:0.8rem 0 0.5rem;'>2. Mouvements et Déplacements Inutiles</div>
             <div style='font-size:0.82rem; color:#4A2D5A;'>Déplacements pour rechercher des solvants, réactifs ou colonnes non centralisés (34 min). Résolu par la méthode 5S (Action P-05).</div>
         </div>
         """, unsafe_allow_html=True)
@@ -1149,9 +1159,9 @@ elif page == "Démarche Lean & DMAIC":
     with c2:
         st.markdown("""
         <div style='background:white; border-radius:14px; padding:1.2rem; box-shadow:0 2px 12px rgba(192,99,122,0.08);'>
-            <div style='font-weight:700; color:#C0637A; margin-bottom:0.5rem;'>3. Défauts / Retouches & Reprises</div>
+            <div style='font-weight:700; color:#3A7D34; margin-bottom:0.5rem;'>3. Défauts / Retouches & Reprises</div>
             <div style='font-size:0.82rem; color:#4A2D5A;'>Vérifications répétitives et réinjections suite à des anomalies chromatographiques (99 min). Résolu par maintenance préventive (Action P-04).</div>
-            <div style='font-weight:700; color:#C0637A; margin:0.8rem 0 0.5rem;'>4. Sur-traitement & Activités NNVA</div>
+            <div style='font-weight:700; color:#3A7D34; margin:0.8rem 0 0.5rem;'>4. Sur-traitement & Activités NNVA</div>
             <div style='font-size:0.82rem; color:#4A2D5A;'>Enregistrements multiples sur cahiers papier et registres manuels (1 507 min). Standardisés dans le Référentiel des Tâches.</div>
         </div>
         """, unsafe_allow_html=True)
